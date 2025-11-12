@@ -73,3 +73,10 @@ Schema reference: [`ops/schemas/frontmatter.schema.json`](./ops/schemas/frontmat
 - Architecture & operating contract: **`REPO-CONTEXT.md`** (root) and **`ops/REPO-CONTEXT.md`** (internal addendum).
 - Agent behavior: **`ops/AGENTS.md`**.
 - Tag vocabulary: **`ops/TAXONOMY.md`**.
+
+---
+
+## Maintainer
+
+- **owner:** parlau
+- **contact:** vparlau@gmail.com
