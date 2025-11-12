@@ -1,4 +1,4 @@
-# the-construct — Release‑Ready Prompt & Template Library
+# The Construct (the-construct)
 
 **Audience:** Non‑technical users (friends, family, collaborators) and agents.  
 **Goal:** A no‑code, predictable catalog of prompts/templates organized by domain, with clear navigation and minimal surface area.
