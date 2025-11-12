@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/the-construct/frontmatter.schema.json",
+  "title": "the-construct Front-Matter",
+  "description": "Schema for YAML front-matter in prompts/templates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "domain",
+    "type",
+    "version",
+    "owner",
+    "license",
+    "tags",
+    "release_status",
+    "inputs",
+    "output_expectations",
+    "safety"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable slug for this artifact (no version).",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Domain directory slug."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "prompt",
+        "template"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "description": "SemVer string.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "Optional model compatibility hints."
+    },
+    "context_budget": {
+      "type": "integer",
+      "minimum": 256,
+      "description": "Recommended max tokens for context."
+    },
+    "inputs": {
+      "type": "object",
+      "required": [
+        "schema"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/paramDefinition"
+          },
+          "minProperties": 1
+        }
+      }
+    },
+    "output_expectations": {
+      "type": "object",
+      "required": [
+        "format"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "markdown",
+            "json",
+            "plain"
+          ]
+        },
+        "structure": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "length_target": {
+          "type": "string"
+        },
+        "stop_sequences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "safety": {
+      "type": "object",
+      "required": [
+        "pii",
+        "redlines"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pii": {
+          "type": "string",
+          "enum": [
+            "reject",
+            "redact",
+            "allow"
+          ],
+          "default": "reject"
+        },
+        "redlines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "disclaimers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "input": {
+            "type": "object"
+          },
+          "output_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "release_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "review",
+        "released",
+        "deprecated"
+      ]
+    },
+    "changelog_ref": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "paramDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "required"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "integer",
+            "boolean",
+            "array",
+            "object"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "default": {},
+        "description": {
+          "type": "string"
+        },
+        "enum": {
+          "type": "array",
+          "items": {}
+        },
+        "items": {
+          "description": "For array type.",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "description": "For object type: property map."
+        }
+      }
+    }
+  }
+}

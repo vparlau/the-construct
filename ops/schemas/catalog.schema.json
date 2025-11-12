@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/the-construct/catalog.schema.json",
+  "title": "the-construct Machine Catalog",
+  "description": "Schema for ops/catalogs/CATALOG.json generated from artifact front-matter.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "generated",
+    "last_updated",
+    "items"
+  ],
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "generated": {
+      "type": "boolean"
+    },
+    "last_updated": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "domain",
+          "path",
+          "type",
+          "version",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "domain": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "path": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "prompt",
+              "template"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "review",
+              "released",
+              "deprecated"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

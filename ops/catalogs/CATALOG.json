@@ -1,0 +1,7 @@
+{
+  "$schema": "../schemas/catalog.schema.json",
+  "description": "Optional machine index generated from artifact front-matter.",
+  "generated": false,
+  "last_updated": null,
+  "items": []
+}
