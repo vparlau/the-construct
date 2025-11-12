@@ -1,4 +1,64 @@
+---
+id: woodcut-lino-print
+title: Woodcut / Lino Print Style
+domain: image-style-templates
+type: prompt
+version: 1.0.0
+owner: parlau
+license: MIT
+tags:
+  - image
+  - generation
+  - plain
+  - graphic-design
+release_status: released
+inputs:
+  schema:
+    subject_description:
+      type: string
+      required: true
+      description: Description of the subject to be rendered
+    line_thickness:
+      type: string
+      required: false
+      description: Line Thickness (e.g., fine, medium, thick)
+    carving_style:
+      type: string
+      required: false
+      description: Carving Style (e.g., bold cuts, delicate lines, mixed)
+    colour_palette:
+      type: string
+      required: false
+      description: Colour Palette (e.g., black and white, two colours, multicolour)
+    texture_intensity:
+      type: string
+      required: false
+      description: Texture Intensity (e.g., subtle grain, moderate woodgrain, pronounced texture)
+    print_size:
+      type: string
+      required: false
+      description: Print Size (e.g., small vignette, medium print, large poster)
+    background_detail:
+      type: string
+      required: false
+      description: Background Detail (e.g., none, simple pattern, carved border)
+    mood:
+      type: string
+      required: false
+      description: Mood (e.g., folk art, dramatic, whimsical)
+output_expectations:
+  format: plain
+safety:
+  pii: reject
+  redlines:
+    - Do not generate images of real people without explicit consent
+constraints:
+  - Output must be a plain text prompt suitable for image generation models
+  - Prompt should maintain square composition format
+  - All config parameters are optional but enhance the result when provided
+---
 # Woodcut / Lino Print Style
+
 
 ```
 {SUBJECT_DESCRIPTION}, portrayed in a woodcut or lino print style. Compose the square image with bold, carved lines and strong contrasts. Simplify forms into shapes that can be carved, leaving areas of white or single colour for highlights and dark areas for shadows. Choose a palette—often black and white or limited colours—to enhance the graphic quality. Emphasise the texture of the carving: visible gouges, uneven edges, or woodgrain. Decide on line thickness and carving style below. Finish with a rustic or dramatic mood that reflects traditional printmaking.

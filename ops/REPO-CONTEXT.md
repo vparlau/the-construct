@@ -4,6 +4,7 @@ This document augments the **canonical** repository context at the root (`/REPO-
 
 ## 1) Contract Reinforcements
 - **Minimal domains:** Keep only `README.md`, `INDEX.md`, `USAGE-GUIDE.md`, `CHANGELOG.md`, and content folders; add a domain `AGENTS.md` only when specialization is needed.
+- **Categories vs subdomains:** Domains may organize artifacts into subdirectories (e.g., `domain/category/`). These are organizational categories, not separate domains. All artifacts share the same `domain` value in front-matter.
 - **Two-tier changelogs:** Root log = summary; domain logs = authoritative local history.
 - **No-code guarantee:** All governance lives as Markdown and JSON Schemas here; automation, if any, runs outside the repo.
 

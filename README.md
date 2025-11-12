@@ -21,7 +21,11 @@ domain-name/
   prompts/
   templates/   # optional
   assets/      # optional
+  category/    # optional: subdirectories for organization (not subdomains)
 ```
+
+**Note:** Domains may contain subdirectories for organizational purposes (e.g., `image-style-templates/photography/`, `image-style-templates/illustration/`). These are **categories** within the domain, not separate domains. All artifacts in a domain share the same `domain` value in their front-matter, regardless of which category subdirectory they're in.
+
 Domains inherit global agent behavior from `ops/AGENTS.md`. Add `domain/AGENTS.md` **only** when you need domain‑specific overrides.
 
 ---

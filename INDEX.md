@@ -8,7 +8,7 @@ A human‑readable map of domains and quick links. Keep this file concise and cu
 
 | Domain | Purpose (1 line) | Maintainer | Path | Index | Usage |
 |---|---|---|---|---|---|
-| _none yet_ | Add your first domain below | — | — | — | — |
+| image-style-templates | Image generation prompt templates organized by visual style categories | parlau | image-style-templates/ | [INDEX](image-style-templates/INDEX.md) | [USAGE](image-style-templates/USAGE-GUIDE.md) |
 
 <!--
 To register a domain, add a row like:
